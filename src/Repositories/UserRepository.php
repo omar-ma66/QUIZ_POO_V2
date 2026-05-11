@@ -20,6 +20,14 @@ class UserRepository extends AbstractRepository
             return null;
  }
  public function selectAll(){}
+
+ public function deleteByObjet(Users $obj)
+ {
+   $smt =   $this->bdd->prepare("DELETE FROM $this->tableName WHERE pseudo = :pseudo");
+   $pseudo = $obj->getPseudo();
+    $smt->bindParam(":pseudo",$pseudo,PDO::PARAM_STR);
+  $rep =  $smt->execute();
+ }
  /*---------------------------------------------------------------------------------*/
  public function deleteByID(int $id){
  $smt =   $this->bdd->prepare("DELETE FROM $this->tableName WHERE id = :id");
