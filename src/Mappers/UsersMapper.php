@@ -9,13 +9,13 @@ class UsersMapper implements MapperInterface
        return new Users($data['id'], $data['pseudo']);
     }
 
-    /*
-    public function mapToArray(Users $obj): array
+    
+    public function mapToArray(object $obj): array
     {
         return [
             'id' => $obj->getId(),
             'pseudo' => $obj->getPseudo()
         ];
     }
-        */
+        
 }

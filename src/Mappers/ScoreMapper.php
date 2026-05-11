@@ -9,11 +9,11 @@ public function mapToObjet(array $data):Score
     return new Score ($data["id"],$data["theme_id"],$data["nb_reponse"],$data["duree"],$data["user_id"]);
 }
 
-/*
-public function mapToArray(Score $obj):array
+
+public function mapToArray(object $obj):array
 {
     return [$obj->getID(),$obj->getThemeID(),$obj->getNbReponse(),$obj->getDuree(),$obj->getUserID()]  ;  
 }
-    */
+    
 
 }
