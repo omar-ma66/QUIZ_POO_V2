@@ -25,22 +25,17 @@ $reponseObj   =  $reponseRipo->selectByQuestionID($questionObj);
  echo str_repeat("-",80) ."<br>" ;
 
  echo $questionObj->getQuestion() ."<br>" ;
+ echo $questionObj->getId() ."<br>" ;
+ echo $questionObj->getThemeID() ."<br>";
+ 
+ echo str_repeat("-",80) ."<br>" ;
+
+
  echo $reponseObj->getReponse() ."<br>" ; 
+echo $reponseObj->isTrue() ."<br>" ;
+
 
     $userRipo->deleteByObjet($userObj);
     $userRipo->deleteByID(15);
     $userRipo->deleteByID(16);
     $userRipo->deleteByID(14);
-/*
-$user->create("test");
-$user->deleteByID(7);
-$user->deleteByID(8);
-$user->deleteByID(9);
-$user->deleteByID(10);
-$user->deleteByID(11);
-$user->deleteByID(12);
-$user->deleteByID(13);
-$user->deleteByID(6);
-*/
-
-           
