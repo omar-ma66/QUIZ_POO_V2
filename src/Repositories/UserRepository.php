@@ -41,7 +41,7 @@ class UserRepository extends AbstractRepository
               {
 
                         $this->mapper = new UsersMapper();
-                        return       $this->mapper->mapToObjet([$this->bdd->lastInsertId(),$name]);
+                        return       $this->mapper->mapToObjet(["id"=>$this->bdd->lastInsertId(),"pseudo"=>$name]);
                       
             }
             return null;

@@ -6,9 +6,10 @@ class UsersMapper implements MapperInterface
 {
     public function mapToObjet(array $data): Users
     {
-       return new Users($dataUser['id'],$dataUser['pseudo']);
+       return new Users($data['id'], $data['pseudo']);
     }
 
+    /*
     public function mapToArray(Users $obj): array
     {
         return [
@@ -16,4 +17,5 @@ class UsersMapper implements MapperInterface
             'pseudo' => $obj->getPseudo()
         ];
     }
+        */
 }
