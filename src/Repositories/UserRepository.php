@@ -1,0 +1,52 @@
+<?php
+
+class UserRepository extends AbstractRepository
+{
+ private UsersMapper $mapper;
+
+ /*---------------------------------------------------------------------------------*/
+ public function selectByID(int $id):?Users
+ {
+ $smt =   $this->bdd->prepare("SELECT * FROM $this->tableName WHERE id = :id");
+ $smt->bindParam(":id",$id,PDO::PARAM_INT);
+ $smt->execute();
+ $user = $smt->fetch(PDO::FETCH_ASSOC);
+                if($smt->rowCount() === 1)
+                    {
+                                  $this->mapper = new UsersMapper();
+                        return   $this->mapper->mapToObjet($user);
+                      
+                    }
+            return null;
+ }
+ public function selectAll(){}
+ /*---------------------------------------------------------------------------------*/
+ public function deleteByID(int $id){
+ $smt =   $this->bdd->prepare("DELETE FROM $this->tableName WHERE id = :id");
+    $smt->bindParam(":id",$id,PDO::PARAM_INT);
+  $rep =  $smt->execute();
+                      
+          return $rep ;
+ }
+ /*---------------------------------------------------------------------------------*/
+ public function insert()
+ {}
+ /*---------------------------------------------------------------------------------*/
+ public function create(string $name):?Users
+ {
+   $smt =  $this->bdd->prepare("INSERT INTO $this->tableName(  pseudo) VALUES( :pseudo)");
+   $smt ->bindParam(":pseudo",$name,PDO::PARAM_STR); 
+   $smt->execute();
+            if($this->bdd->lastInsertId() != null)
+              {
+
+                        $this->mapper = new UsersMapper();
+                        return       $this->mapper->mapToObjet([$this->bdd->lastInsertId(),$name]);
+                      
+            }
+            return null;
+}
+ /*---------------------------------------------------------------------------------*/
+ public function updateByID(){}
+ /*---------------------------------------------------------------------------------*/
+}
