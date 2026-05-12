@@ -3,6 +3,47 @@ require("../../utils/autoload.php");
 require("../../config/PDOConnect.php");
 
 $idcon = PDOConnect("../../config/param");
+
+  $themeRipo = new ThemeRepository($idcon,"themes");
+  $questionRipo = new QuestionRepository($idcon,"questions");
+$themeObj    = $themeRipo->selectByName("science");
+
+                $QuestionService = new QuestionService($questionRipo,$themeObj,5);
+
+            if( $QuestionService->generate())
+                {
+                    $question = $QuestionService->getQuestion(0);
+                      if($question !== null)
+                    echo $question->getQuestion() . "<br>";
+                }  
+            else
+                {
+                    echo "probleme <br>";
+                }      
+      if( $QuestionService->generate())
+                {
+                    $question = $QuestionService->getQuestion(1);
+                        if($question !== null)
+                                echo $question->getQuestion() . "<br>";
+                }  
+            else
+                {
+                    echo "probleme <br>";
+                }     
+         if( $QuestionService->generate())
+                {
+                    $question = $QuestionService->getQuestion(2);
+                      if($question !== null)
+                    echo $question->getQuestion() . "<br>";
+                }  
+            else
+                {
+                    echo "probleme <br>";
+                }             
+                
+                
+
+
 #################################################################
 $userRipo = new UserRepository($idcon,"users");
 $themeRipo = new ThemeRepository($idcon,"themes");
