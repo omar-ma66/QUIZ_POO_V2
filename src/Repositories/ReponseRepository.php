@@ -13,6 +13,7 @@ class ReponseRepository extends AbstractRepository
    $reponses = $smt->fetchAll(PDO::FETCH_ASSOC);
                 if($reponses)
                     {  
+                      // ici ca va posé un probleme  le mapper ne gere pas ce cas;
                       $this->mapper = new ReponsesMapper();
                        return $this->mapper->mapToObjet($reponses);
                 
@@ -22,7 +23,7 @@ class ReponseRepository extends AbstractRepository
  
  public function selectByQuestionID(Questions $obj ):?Reponses
  {
-   $smt =    $this->bdd->prepare("SELECT * FROM $this->tableName WHERE question_id = :id LIMIT 1");
+   $smt =    $this->bdd->prepare("SELECT * FROM $this->tableName WHERE question_id = :id ORDER BY RAND() LIMIT 1");
    $smt->bindParam(":id",$obj->id,PDO::PARAM_INT);
    $smt->execute();
    $reponses = $smt->fetch(PDO::FETCH_ASSOC);
