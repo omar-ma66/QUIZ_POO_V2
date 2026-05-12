@@ -15,8 +15,8 @@ $theme = $_SESSION["theme"] ;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Game</title>
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
-  <script defer async src="js/game.js" type="module">
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+  <script defer async src="../js/game.js" type="module">
   
   </script>
 </head>
@@ -38,14 +38,14 @@ $theme = $_SESSION["theme"] ;
       <div class="flex flex-row justify-center items-center p-4.5 gap-1">
         <img
           class="w-5.5"
-          src="png/fleche-gauche.png"
+          src="../png/fleche-gauche.png"
           alt="fleche-gauche.png" />
         <a class="hover:text-red-700" href="theme.php"><span class="text-2xl">Quitter </span></a>
       </div>
       <!-- -------------------------------------------------------------------------------- -->
       <div
         class="flex flex-row justify-center items-center px-6.5  h-12.5 gap-2 bg-[#d9D9D9] rounded-[25px]">
-        <img class="w-5.5 h-5.5" src="png/cercle.png" alt="cercle.png" />
+        <img class="w-5.5 h-5.5" src="../png/cercle.png" alt="cercle.png" />
         <h2 id="theme-choisi" class="text-2xl"><?= $_SESSION["theme"] ?></h2>
       </div>
     </section>

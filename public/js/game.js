@@ -142,7 +142,7 @@ btnSuivant.addEventListener("click", (event) => {
   if (numQuestion < 5) {
     playGame();
   } else {
-    window.location.href = "endGame.php";
+    window.location.href = "./endGame.php";
   }
 });
 
@@ -442,7 +442,7 @@ async function getReponses(questions) {
 // Recupere le ID du Theme
 async function getThemeQuestionsID(themeObjet) {
   try {
-    let reponse = await fetch("api/getThemeQuestionsID.php", {
+    let reponse = await fetch("../src/getThemeQuestionsID.php", {
       method: "POST",
       body: JSON.stringify(themeObjet),
       headers: {
@@ -472,7 +472,7 @@ async function getThemeQuestionsID(themeObjet) {
 async function getThemeQuestionsForGame(themeID) {
   let themeObjet = { theme: themeID, status: "debug" };
   try {
-    let reponse = await fetch("api/getThemeQuestionsForGame.php", {
+    let reponse = await fetch("../src/getThemeQuestionsForGame.php", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(themeObjet),

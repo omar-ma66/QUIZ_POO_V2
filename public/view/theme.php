@@ -13,8 +13,8 @@ if (!isset($_SESSION["connecter"]) ||  $_SESSION["connecter"] !== "yes") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thème</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <script defer async src="js/theme.js" type="module"></script>
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <script defer async src="../js/theme.js" type="module"></script>
 </head>
 
 <body class="w-screen h-screen">
@@ -28,10 +28,10 @@ if (!isset($_SESSION["connecter"]) ||  $_SESSION["connecter"] !== "yes") {
 
 <main class="min-h-dvh"> 
     <section class=" flex flex-row justify-between items-center p-3  text-2xl lg:justify-start">
-        <img class="w-5.75 h-5.75  lg:mr-6 lg:h-12 " src="png/cerveau.png" alt="cerveau.png">
+        <img class="w-5.75 h-5.75  lg:mr-6 lg:h-12 " src="../png/cerveau.png" alt="cerveau.png">
         <h1 class="lg:text-4xl">QuizMaster</h1>
         <div class="hover:bg-[#64CD8A] p-1 lg:ml-auto ">
-            <a href="../src/deconnection.php"><img class="w-5.75 h-5.75 lg:w-12 lg:h-12" src="png/se-deconnecter.png" alt="se-deconnecter.png" class="w-8.75 h-8.75"></a>
+            <a href="../src/deconnection.php"><img class="w-5.75 h-5.75 lg:w-12 lg:h-12" src="../png/se-deconnecter.png" alt="se-deconnecter.png" class="w-8.75 h-8.75"></a>
         </div>
     </section>
     <!-- ----------------------------------------------- -->
@@ -48,7 +48,7 @@ if (!isset($_SESSION["connecter"]) ||  $_SESSION["connecter"] !== "yes") {
         <section id="id-science" class="bg-[#D9D9D9] p-3.5 rounded-[20px] flex flex-row justify-between lg:gap-4  lg:p-10  transition-colors hover:border-blue-600 hover:bg-gray-300  border-gray-500 border-4 hover:scale-103">
             <article class="flex flex-col gap-1 pb-2 ">
                 <div class="bg-[#64CD8A]  w-10 flex justify-center rounded-[20px]">
-                    <img src="png/humain.png" alt="humain.png" class="w-8.5 h-8.5 lg:w-19.5 lg:h-19.5">
+                    <img src="../png/humain.png" alt="humain.png" class="w-8.5 h-8.5 lg:w-19.5 lg:h-19.5">
                 </div>
                 <h3 class="text-2xl font-bold">Science</h3>
             </article>
@@ -58,7 +58,7 @@ if (!isset($_SESSION["connecter"]) ||  $_SESSION["connecter"] !== "yes") {
         <section id="id-geographie" class="bg-[#D9D9D9] p-3.5 rounded-[20px] flex flex-row justify-between lg:gap-4  lg:p-10  transition-colors hover:border-blue-600  hover:bg-gray-300 border-gray-500 border-4 hover:scale-103">
             <article class="flex flex-col gap-1 pb-2 ">
                 <div class="bg-[#64CD8A]  w-10 flex justify-center rounded-[20px]">
-                    <img src="png/geometrie.png" alt="geometrie.png" class="w-8.5 h-8.5 lg:w-19.5 lg:h-19.5">
+                    <img src="../png/geometrie.png" alt="geometrie.png" class="w-8.5 h-8.5 lg:w-19.5 lg:h-19.5">
                 </div>
                 <h3 class="text-2xl font-bold">Géographie</h3>
             </article>
@@ -69,7 +69,7 @@ if (!isset($_SESSION["connecter"]) ||  $_SESSION["connecter"] !== "yes") {
         <section id="id-capitale" class="bg-[#D9D9D9] p-3.5 rounded-[20px] flex flex-row justify-between lg:gap-4  lg:p-10 transition-colors hover:border-blue-600 hover:bg-gray-300  border-gray-500 border-4 hover:scale-103">
             <article class="flex flex-col gap-1 pb-2 ">
                 <div class="bg-[#64CD8A]  w-10  flex justify-center rounded-[20px]">
-                    <img src="png/capitale (1).png" alt="capitale" class="w-8.5 h-8.5 lg:w-19.5 lg:h-19.5">
+                    <img src="../png/capitale (1).png" alt="capitale" class="w-8.5 h-8.5 lg:w-19.5 lg:h-19.5">
                 </div>
                 <h3 class="text-2xl font-bold">Capitales</h3>
             </article>
@@ -80,7 +80,7 @@ if (!isset($_SESSION["connecter"]) ||  $_SESSION["connecter"] !== "yes") {
         <section id="id-univers" class="bg-[#D9D9D9] p-3.5 rounded-[20px] flex flex-row justify-between lg:gap-4  lg:p-10 transition-colors hover:border-blue-600 hover:bg-gray-300  border-gray-500 border-4 hover:scale-103">
             <article class="flex flex-col gap-1 pb-2 ">
                 <div class="bg-[#64CD8A]  w-10  flex justify-center rounded-[20px]">
-                    <img src="png/telescope.png" alt="telescope.png" class="w-8.5 h-8.5 lg:w-19.5 lg:h-19.5">
+                    <img src="../png/telescope.png" alt="telescope.png" class="w-8.5 h-8.5 lg:w-19.5 lg:h-19.5">
                 </div>
                 <h3 class="text-2xl font-bold">Univers</h3>
             </article>

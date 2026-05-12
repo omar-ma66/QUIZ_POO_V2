@@ -10,17 +10,17 @@ class ThemeRepository extends AbstractRepository
         $this->themeMapper = new ThemeMapper();
     }
 
-    // public function selectByName(string $themeName)
-    // {
-    //     $smt =  $this->bdd->prepare("SELECT * FROM $this->tableName WHERE theme= :theme");
-    //     $smt->bindParam(":theme", $themeName, PDO::PARAM_STR);
-    //     $smt->execute();
-    //     $theme = $smt->fetch(PDO::FETCH_NUM);
-    //     if ($theme)
-    //         return new Theme($theme[0], $theme[1]);
-    //     else
-    //         return null;
-    // }
+    public function selectByName(string $themeName)
+    {
+        $smt =  $this->bdd->prepare("SELECT * FROM $this->tableName WHERE theme= :theme");
+        $smt->bindParam(":theme", $themeName, PDO::PARAM_STR);
+        $smt->execute();
+        $theme = $smt->fetch(PDO::FETCH_ASSOC);
+        if ($theme)
+            return $this->themeMapper->mapToObjet($theme);
+        else
+            return null;
+    }
 
     public function selectByID(int $id): ?Theme
     {

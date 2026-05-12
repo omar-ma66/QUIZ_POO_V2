@@ -1,4 +1,5 @@
 <?php
+require("../../config/PDOConnect.php");
 class DatabaseConnection
 {
     private static ?PDO $instance = null;

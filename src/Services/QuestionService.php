@@ -23,9 +23,6 @@ class QuestionService
 
   public function generate(Theme $theme, int $limit): array
   {
-
- 
-
     $questions = $this->questionRepo->getRandQuestionsForTheme($theme->getThemeID(), $limit);    // signature de la question id question theme_id
 
     /** @var Questions $question */
@@ -34,7 +31,6 @@ class QuestionService
       $reponses = $this->reponseRepo->getReponsesForQuestion($question->getId());
       $question->setReponses($reponses);
     }
-        
     return $questions;
 
     // if ($this->index < $this->limit) {

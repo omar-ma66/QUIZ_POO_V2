@@ -1,9 +1,6 @@
 <?php
-
-
 require("../../utils/autoload.php");
 require("../../config/PDOConnect.php");
-
 
 session_start();
 
@@ -12,7 +9,8 @@ $themeRipo = new ThemeRepository();
 
 // $reponseRepo  = new ReponseRepository();
 
-$theme           = $themeRipo->selectByID(1);
+$theme           = $themeRipo->selectByID(3);
+
 
 $questionService = new QuestionService();
 
@@ -21,6 +19,11 @@ $questions       = $questionService->generate($theme, 5);
 if (!empty($questions)) {
     $_SESSION['questions'] = $questions;
     $_SESSION['index_question'] = 0;
+
+$matrix = [[1,2,3],[4,5,6],[7,8,9]];
+$_SESSION["matrix"] = $matrix ;
+
+
     header("Location: ./filetest2.php");
    
 }

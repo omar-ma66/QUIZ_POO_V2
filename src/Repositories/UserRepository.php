@@ -4,6 +4,12 @@ class UserRepository extends AbstractRepository
 {
  private UsersMapper $mapper;
 
+
+ public function __construct()
+ {
+  $this->mapper = new UsersMapper();
+  return parent::__construct("users");
+ }
  /*---------------------------------------------------------------------------------*/
  public function selectByID(int $id):?Users
  {
@@ -13,7 +19,7 @@ class UserRepository extends AbstractRepository
  $user = $smt->fetch(PDO::FETCH_ASSOC);
                 if($smt->rowCount() === 1)
                     {
-                                  $this->mapper = new UsersMapper();
+                                
                         return   $this->mapper->mapToObjet($user);
                       
                     }
@@ -48,7 +54,7 @@ class UserRepository extends AbstractRepository
             if($this->bdd->lastInsertId() != null)
               {
 
-                        $this->mapper = new UsersMapper();
+                    
                         return       $this->mapper->mapToObjet(["id"=>$this->bdd->lastInsertId(),"pseudo"=>$name]);
                       
             }
