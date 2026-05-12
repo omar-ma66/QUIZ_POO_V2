@@ -1,89 +1,103 @@
 <?php
+
+
 require("../../utils/autoload.php");
 require("../../config/PDOConnect.php");
 
-$idcon = PDOConnect("../../config/param");
 
-$themeRipo = new ThemeRepository($idcon, "themes");
-$questionRipo = new QuestionRepository($idcon, "questions");
+session_start();
 
-$reponseRepo  = new ReponseRepository($idcon, "reponses");
+$themeRipo = new ThemeRepository();
+// $questionRipo = new QuestionRepository();
 
-$themeObj    = $themeRipo->selectByName("science");
+// $reponseRepo  = new ReponseRepository();
 
-$QuestionService = new QuestionService($questionRipo, $themeObj, 5);
+$theme           = $themeRipo->selectByID(1);
 
-if ($QuestionService->generate()) {
-    $question = $QuestionService->getQuestion(0);
-    if ($question !== null) {
-        echo $question->getQuestion() . "<br>";
-        $reponseService = new ReponseService($reponseRepo, $question);
+$questionService = new QuestionService();
 
-        if ($reponseService->generate()) {
-            echo  $reponseService->getReponse(0)->getReponse() . "<br>";
-        }
-        if ($reponseService->generate()) {
-            echo  $reponseService->getReponse(1)->getReponse() . "<br>";
-        }
-    }
+$questions       = $questionService->generate($theme, 5);
 
-    echo str_repeat("-", 80) . "<br>";
-    echo str_repeat("-", 80) . "<br>";
-
-    echo "Super ca marche <br>";
-
-    echo str_repeat("-", 80) . "<br>";
-    echo str_repeat("-", 80) . "<br>";
-} else {
-    echo "probleme <br>";
+if (!empty($questions)) {
+    $_SESSION['questions'] = $questions;
+    $_SESSION['index_question'] = 0;
+    header("Location: ./filetest2.php");
+   
 }
 
-echo str_repeat("-", 80) . "<br>";
+
+
+// if ($QuestionService->generate($themeRipo->selectByID(1),5)) {
+//     $question = $QuestionService->getQuestion(0);
+//     if ($question !== null) {
+//         echo $question->getQuestion() . "<br>";
+//         $reponseService = new ReponseService($reponseRepo, $question);
+
+//         if ($reponseService->generate()) {
+//             echo  $reponseService->getReponse(0)->getReponse() . "<br>";
+//         }
+//         if ($reponseService->generate()) {
+//             echo  $reponseService->getReponse(1)->getReponse() . "<br>";
+//         }
+//     }
+
+//     echo str_repeat("-", 80) . "<br>";
+//     echo str_repeat("-", 80) . "<br>";
+
+//     echo "Super ca marche <br>";
+
+//     echo str_repeat("-", 80) . "<br>";
+//     echo str_repeat("-", 80) . "<br>";
+// } else {
+//     echo "probleme <br>";
+// }
+
+// echo str_repeat("-", 80) . "<br>";
 
 
 
 
-echo str_repeat("-", 80) . "<br>";
-echo str_repeat("-", 80) . "<br>";
-echo str_repeat("-", 80) . "<br>";
+// echo str_repeat("-", 80) . "<br>";
+// echo str_repeat("-", 80) . "<br>";
+// echo str_repeat("-", 80) . "<br>";
 
 
 
 
 
-#################################################################
-$userRipo = new UserRepository($idcon, "users");
-$themeRipo = new ThemeRepository($idcon, "themes");
-$questionRipo = new QuestionRepository($idcon, "questions");
-$reponseRipo  = new ReponseRepository($idcon, "reponses");
+// #################################################################
+// $userRipo = new UserRepository($idcon, "users");
+// $themeRipo = new ThemeRepository($idcon, "themes");
+// $questionRipo = new QuestionRepository($idcon, "questions");
+// $reponseRipo  = new ReponseRepository($idcon, "reponses");
 
-#################################################################
+// #################################################################
 
-$userObj   =  $userRipo->create("Bob Marley");
+// $userObj   =  $userRipo->create("Bob Marley");
 
-$themeObj = $themeRipo->selectByName("science");
-$questionObj   = $questionRipo->selectByThemeID($themeObj);
-$reponseObj   =  $reponseRipo->selectByQuestionID($questionObj);
-####################################################################
-echo  $userObj->getPseudo() . "<br>";
-echo  $userObj->getId()  . "<br>";
-echo str_repeat("-", 80) . "<br>";
-echo $themeObj->getTheme() . "<br>";
-echo $themeObj->getThemeID() . "<br>";
-echo str_repeat("-", 80) . "<br>";
+// $themeObj = $themeRipo->selectByName("science");
+// $questionObj   = $questionRipo->selectByThemeID($themeObj);
+// $reponseObj   =  $reponseRipo->selectByQuestionID($questionObj);
+// ####################################################################
+// echo  $userObj->getPseudo() . "<br>";
+// echo  $userObj->getId()  . "<br>";
+// echo str_repeat("-", 80) . "<br>";
+// echo $themeObj->getTheme() . "<br>";
+// echo $themeObj->getThemeID() . "<br>";
+// echo str_repeat("-", 80) . "<br>";
 
-echo $questionObj->getQuestion() . "<br>";
-echo $questionObj->getId() . "<br>";
-echo $questionObj->getThemeID() . "<br>";
+// echo $questionObj->getQuestion() . "<br>";
+// echo $questionObj->getId() . "<br>";
+// echo $questionObj->getThemeID() . "<br>";
 
-echo str_repeat("-", 80) . "<br>";
-
-
-echo $reponseObj->getReponse() . "<br>";
-echo $reponseObj->isTrue() . "<br>";
+// echo str_repeat("-", 80) . "<br>";
 
 
-$userRipo->deleteByObjet($userObj);
-$userRipo->deleteByID(15);
-$userRipo->deleteByID(16);
-$userRipo->deleteByID(14);
+// echo $reponseObj->getReponse() . "<br>";
+// echo $reponseObj->isTrue() . "<br>";
+
+
+// $userRipo->deleteByObjet($userObj);
+// $userRipo->deleteByID(15);
+// $userRipo->deleteByID(16);
+// $userRipo->deleteByID(14);

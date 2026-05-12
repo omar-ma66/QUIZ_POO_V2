@@ -1,5 +1,5 @@
 <?php
-function PDOConnect(string $param)
+function PDOConnect(string $param): string|PDO
 {
     require($param . ".inc.php");
     $base = DATABASE;
@@ -16,10 +16,7 @@ function PDOConnect(string $param)
         $dbcon = new PDO($dsn, $user, $pass, $options);
         return $dbcon;
     } catch (PDOException $errPDO) {
-        echo "Une erreur PDO c'est produite MESSAGE :" .  $errPDO->getMessage() . "<br>";
-        echo "nom du fichier :"   .   $errPDO->getFile() . "<br>";
-        echo "numéro de  ligne : " .      $errPDO->getLine() . "<br>";
-        echo "Code erreur : " .      $errPDO->getCode() . "<br>";
+        return "Une erreur PDO c'est produite MESSAGE : " . $errPDO->getMessage() . " \nnom du fichier : " . $errPDO->getFile() . " \nnuméro de  ligne : " . $errPDO->getLine() . " \nCode erreur : " . $errPDO->getCode();
     }
 }
 

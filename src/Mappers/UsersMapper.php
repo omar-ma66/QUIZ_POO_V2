@@ -1,7 +1,5 @@
 <?php
 //  require("../../utils/autoload.php");
-
-
 class UsersMapper implements MapperInterface 
 {
     public function mapToObjet(array $data): Users
