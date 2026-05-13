@@ -26,3 +26,7 @@ if ($themeIdArray["status"] === "question-reponses") {
 
     echo json_encode(["status" => "success", "question" => $question_, "reponses" => $allreponses]);
 }
+if ($themeIdArray["status"] === "quiz"){
+    echo json_encode(["status" => "bravo"]);
+
+}

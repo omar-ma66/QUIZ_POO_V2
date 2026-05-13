@@ -86,7 +86,7 @@ boiteReponse1.addEventListener('click',(event)=>{
   if(event.currentTarget === boiteReponse1)
   {
     console.log(event.currentTarget.dataset.reponse);
-  //  getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
+    getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
   }
        
 })
@@ -95,14 +95,14 @@ boiteReponse2.addEventListener('click',(event)=>{
    if(event.currentTarget === boiteReponse2)
        {
         console.log(event.currentTarget.dataset.reponse);
-  //  getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
+    getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
        }
 })
 boiteReponse3.addEventListener('click',(event)=>{
    if(event.currentTarget === boiteReponse3)
        {
         console.log(event.currentTarget.dataset.reponse);
-  //  getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
+    getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
 
        }
 })
@@ -110,7 +110,7 @@ boiteReponse4.addEventListener('click',(event)=>{
    if(event.currentTarget === boiteReponse4)
    { 
        console.log(event.currentTarget.dataset.reponse);
-  //  getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
+    getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
       
       }
 })
@@ -343,6 +343,10 @@ try{
         console.log(data["reponses"][0]["reponse"]);
         playGame2(data);
       }
+    if(data["status"]=="bravo")
+      {
+        console.log("BRAVO");
+      }  
  
     
 }
