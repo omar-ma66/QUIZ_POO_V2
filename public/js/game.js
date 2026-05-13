@@ -393,6 +393,39 @@ function playGame() {
       break;
   }
 }
+
+async function getQuestionAndReponses( id )
+{
+try{
+    let reponse = await fetch("../src/getQuestionAndReponses",{method:"POST",
+                            headers:{
+                              "Content-Type":"application/json"
+                                  },
+                            body:JSON.stringify({"status":"debug","id":id})});
+      if(!reponse.ok)
+          throw new Error("j'ai un probleme");     
+        
+    let data  = await reponse.json();
+    if(data["status"]=="success")
+      {
+        console.log("cool");
+    
+        console.log(data["question"]);
+        console.log(data["reponses"][0]["id"]);
+        console.log(data["reponses"][0]["reponse"]);
+      }  
+}
+catch(err)
+{
+      console.log( "un probleme");
+}
+
+
+
+}
+
+
+
 //###########################################################################
 // fonction pour ranger les ID et les questions associer
 function questionRange(datas) {
@@ -483,9 +516,10 @@ async function getThemeQuestionsForGame(themeID) {
       console.log(
         "Debug fichier game.js fonction getThemeQuestionForGame: tout c'est bien passe :",
       );
-      console.log(data["questions"][0]);
-      questionsAllInformations = data; // ici j'ai mes 5 questions ;
-      questionRange(data);
+      getQuestionAndReponses(0); // premier call
+      // console.log(data["questions"][0]);
+      // questionsAllInformations = data; // ici j'ai mes 5 questions ;
+      // questionRange(data);
     } else {
       console.log("un probleme cote php");
     }

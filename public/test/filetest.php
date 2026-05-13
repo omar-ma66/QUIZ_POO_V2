@@ -1,6 +1,6 @@
 <?php
 require("../../utils/autoload.php");
-require("../../config/PDOConnect.php");
+// require("../../config/PDOConnect.php");
 
 session_start();
 
@@ -9,7 +9,7 @@ $themeRipo = new ThemeRepository();
 
 // $reponseRepo  = new ReponseRepository();
 
-$theme           = $themeRipo->selectByID(3);
+$theme           = $themeRipo->selectByID(2);
 
 
 $questionService = new QuestionService();
@@ -20,11 +20,31 @@ if (!empty($questions)) {
     $_SESSION['questions'] = $questions;
     $_SESSION['index_question'] = 0;
 
-$matrix = [[1,2,3],[4,5,6],[7,8,9]];
-$_SESSION["matrix"] = $matrix ;
+
+    /**
+     * Quesstions $questions
+     */
+        // var_dump($questions[0]);
+
+     
+      var_dump ( $questions[0]->getQuestion() );
+      var_dump ( $questions[0]->getID());
+      var_dump ( $questions[0]->getThemeID());
+      var_dump ( $questions[0]);
+    //  var_dump ( $questions[0]->getReponses());
+
+        $reponses =  $questions[0]->getReponses();
+
+           var_dump(  $reponses[0]->getReponse() );
+           var_dump(  $reponses[0]->getID());
+           var_dump(  $reponses[0]->isTrue());
+        //    var_dump(  $reponses[1]->getReponse() );
+        //    var_dump(  $reponses[2]->getReponse() );
+        //    var_dump(  $reponses[3]->getReponse() );
 
 
-    header("Location: ./filetest2.php");
+
+   // header("Location: ./filetest2.php");
    
 }
 
