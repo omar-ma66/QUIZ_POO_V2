@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EndGame</title>
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
-  <script defer async src="js/endGame.js" type="module"></script>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+  <script defer async src="../js/endGame.js" type="module"></script>
 </head>
 
 
@@ -44,7 +44,7 @@
         href="theme.php">Rejouer</a>
       <a
         class="text-3xl w-4/5 px-20 py-6 h-20 bg-gray-400 rounded-3xl flex justify-center items-center lg:text-4xl"
-        href="index.php">Accueil</a>
+        href="./home.php">Accueil</a>
     </section>
     <!-- ############################################################################################# -->
 

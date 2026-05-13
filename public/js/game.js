@@ -79,6 +79,46 @@ function InitBackColorReponse() {
 let pageSuivante = 0;
 //bg-[#d9D9D9] Evenement des 4 boutons reponse
 let tour = 0;
+
+
+
+boiteReponse1.addEventListener('click',(event)=>{
+  if(event.currentTarget === boiteReponse1)
+  {
+    console.log(event.currentTarget.dataset.reponse);
+  //  getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
+  }
+       
+})
+
+boiteReponse2.addEventListener('click',(event)=>{
+   if(event.currentTarget === boiteReponse2)
+       {
+        console.log(event.currentTarget.dataset.reponse);
+  //  getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
+       }
+})
+boiteReponse3.addEventListener('click',(event)=>{
+   if(event.currentTarget === boiteReponse3)
+       {
+        console.log(event.currentTarget.dataset.reponse);
+  //  getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
+
+       }
+})
+boiteReponse4.addEventListener('click',(event)=>{
+   if(event.currentTarget === boiteReponse4)
+   { 
+       console.log(event.currentTarget.dataset.reponse);
+  //  getQuestionAndReponses({"status":"quiz","id":event.currentTarget.dataset.reponse})
+      
+      }
+})
+
+
+
+
+
 function initEventBoutonReponse(btn, quiz) {
   if (btn) {
     btn.addEventListener("click", (event) => {
@@ -123,10 +163,10 @@ function initEventBoutonReponse(btn, quiz) {
   } else console.log("############################################");
 }
 
-initEventBoutonReponse(boiteReponse1, quizReponse1);
-initEventBoutonReponse(boiteReponse2, quizReponse2);
-initEventBoutonReponse(boiteReponse3, quizReponse3);
-initEventBoutonReponse(boiteReponse4, quizReponse4);
+// initEventBoutonReponse(boiteReponse1, quizReponse1);
+// initEventBoutonReponse(boiteReponse2, quizReponse2);
+// initEventBoutonReponse(boiteReponse3, quizReponse3);
+// initEventBoutonReponse(boiteReponse4, quizReponse4);
 
 function btnSuivantInvisible() {
   btnSuivant.classList.add("invisible");
@@ -140,7 +180,7 @@ function btnSuivantVisible() {
 btnSuivant.addEventListener("click", (event) => {
   numQuestion++;
   if (numQuestion < 5) {
-    playGame();
+    getQuestionAndReponses(0);
   } else {
     window.location.href = "./endGame.php";
   }
@@ -250,158 +290,43 @@ function InitDataReponsesBoite() {
 // le jeux commance
 let bonneReponse = 1;
 
-//###########################################################################
-function playGame() {
-  InitBackColorReponse(); // initialise le fond des reponses
+//#########################################################################
+function playGame2(data)
+{
+ InitBackColorReponse(); // initialise le fond des reponses
   InitDataReponses(); // init la dataset
   InitDataReponsesBoite();
   btnSuivantInvisible();
-  const matrix = createRandomMatrix(4);
-  let questionsID = questionsAllInformations["questions"][numQuestion][0];
-  let question = questionsAllInformations["questions"][numQuestion][1];
-  let theme = questionsAllInformations["questions"][numQuestion][2];
 
-  // console.log (questionsAllInformations);
-  questionQuiz.innerText = question; // vers html
-
-  console.log(`ID de la question ${questionsID}`);
-  console.log(`:${question}`);
-
-  // console.log(reponsesAll[0][1]);
-  // console.log(reponsesAll[4][1]);
-  // console.log(reponsesAll[8][1]);
-  // console.log(reponsesAll[12][1]);
-  // console.log(reponsesAll[16][1]);
-
+  questionQuiz.innerText = data["question"];
+  
   setQuestion(numQuestion + 1); // affiche le numero de question
   runTime(15); // demarage du chrono
-  //  progresseBarre();
-  switch (
-    questionsID // id de la question
-  ) {
-    case reponsesAll[0][1]: // id question reponse  équivalent
-      console.log(`reponses possible ${reponsesAll[0][2]}`);
-      console.log(`  ${reponsesAll[1][2]} `);
-      console.log(`  ${reponsesAll[2][2]} `);
-      console.log(`${reponsesAll[3][2]} `);
-      //######################################
-      quizReponse1.innerText = reponsesAll[matrix[0]][2];
-      quizReponse2.innerText = reponsesAll[matrix[1]][2];
-      quizReponse3.innerText = reponsesAll[matrix[2]][2];
-      quizReponse4.innerText = reponsesAll[matrix[3]][2];
 
-      quizReponse1.dataset.reponse = reponsesAll[matrix[0]][3];
-      quizReponse2.dataset.reponse = reponsesAll[matrix[1]][3];
-      quizReponse3.dataset.reponse = reponsesAll[matrix[2]][3];
-      quizReponse4.dataset.reponse = reponsesAll[matrix[3]][3];
+      quizReponse1.innerText = data["reponses"][0]["reponse"];
+      quizReponse2.innerText = data["reponses"][1]["reponse"];
+      quizReponse3.innerText = data["reponses"][2]["reponse"];
+      quizReponse4.innerText = data["reponses"][3]["reponse"];
 
-      boiteReponse1.dataset.reponse = reponsesAll[matrix[0]][3];
-      boiteReponse2.dataset.reponse = reponsesAll[matrix[1]][3];
-      boiteReponse3.dataset.reponse = reponsesAll[matrix[2]][3];
-      boiteReponse4.dataset.reponse = reponsesAll[matrix[3]][3];
-
-      //######################################
-      break;
-    case reponsesAll[4][1]: // id question reponse  équivalent
-      console.log(`reponses possible ${reponsesAll[4][2]}`);
-      console.log(`  ${reponsesAll[5][2]} `);
-      console.log(`  ${reponsesAll[6][2]} `);
-      console.log(`${reponsesAll[7][2]} `);
-      //######################################
-      quizReponse1.innerText = reponsesAll[matrix[0] + 4][2];
-      quizReponse2.innerText = reponsesAll[matrix[1] + 4][2];
-      quizReponse3.innerText = reponsesAll[matrix[2] + 4][2];
-      quizReponse4.innerText = reponsesAll[matrix[3] + 4][2];
-
-      quizReponse1.dataset.reponse = reponsesAll[matrix[0] + 4][3];
-      quizReponse2.dataset.reponse = reponsesAll[matrix[1] + 4][3];
-      quizReponse3.dataset.reponse = reponsesAll[matrix[2] + 4][3];
-      quizReponse4.dataset.reponse = reponsesAll[matrix[3] + 4][3];
-
-      boiteReponse1.dataset.reponse = reponsesAll[matrix[0] + 4][3];
-      boiteReponse2.dataset.reponse = reponsesAll[matrix[1] + 4][3];
-      boiteReponse3.dataset.reponse = reponsesAll[matrix[2] + 4][3];
-      boiteReponse4.dataset.reponse = reponsesAll[matrix[3] + 4][3];
-
-      //######################################
-      break;
-    case reponsesAll[8][1]: // id question reponse  équivalent
-      console.log(`reponses possible ${reponsesAll[8][2]}`);
-      console.log(`  ${reponsesAll[9][2]} `);
-      console.log(`  ${reponsesAll[10][2]} `);
-      console.log(`${reponsesAll[11][2]} `);
-      //######################################
-      quizReponse1.innerText = reponsesAll[matrix[0] + 8][2];
-      quizReponse2.innerText = reponsesAll[matrix[1] + 8][2];
-      quizReponse3.innerText = reponsesAll[matrix[2] + 8][2];
-      quizReponse4.innerText = reponsesAll[matrix[3] + 8][2];
-
-      quizReponse1.dataset.reponse = reponsesAll[matrix[0] + 8][3];
-      quizReponse2.dataset.reponse = reponsesAll[matrix[1] + 8][3];
-      quizReponse3.dataset.reponse = reponsesAll[matrix[2] + 8][3];
-      quizReponse4.dataset.reponse = reponsesAll[matrix[3] + 8][3];
-
-      boiteReponse1.dataset.reponse = reponsesAll[matrix[0] + 8][3];
-      boiteReponse2.dataset.reponse = reponsesAll[matrix[1] + 8][3];
-      boiteReponse3.dataset.reponse = reponsesAll[matrix[2] + 8][3];
-      boiteReponse4.dataset.reponse = reponsesAll[matrix[3] + 8][3];
-      //######################################
-      break;
-    case reponsesAll[12][1]: // id question reponse  équivalent
-      console.log(`reponses possible ${reponsesAll[12][2]}`);
-      console.log(`  ${reponsesAll[13][2]} `);
-      console.log(`  ${reponsesAll[14][2]} `);
-      console.log(`${reponsesAll[15][2]} `);
-      //######################################
-      quizReponse1.innerText = reponsesAll[matrix[0] + 12][2];
-      quizReponse2.innerText = reponsesAll[matrix[1] + 12][2];
-      quizReponse3.innerText = reponsesAll[matrix[2] + 12][2];
-      quizReponse4.innerText = reponsesAll[matrix[3] + 12][2];
-
-      quizReponse1.dataset.reponse = reponsesAll[matrix[0] + 12][3];
-      quizReponse2.dataset.reponse = reponsesAll[matrix[1] + 12][3];
-      quizReponse3.dataset.reponse = reponsesAll[matrix[2] + 12][3];
-      quizReponse4.dataset.reponse = reponsesAll[matrix[3] + 12][3];
-
-      boiteReponse1.dataset.reponse = reponsesAll[matrix[0] + 12][3];
-      boiteReponse2.dataset.reponse = reponsesAll[matrix[1] + 12][3];
-      boiteReponse3.dataset.reponse = reponsesAll[matrix[2] + 12][3]; // valeur boolean reponse vrais ou faut
-      boiteReponse4.dataset.reponse = reponsesAll[matrix[3] + 12][3];
-      //######################################
-      break;
-    case reponsesAll[16][1]: // id question reponse  équivalent
-      console.log(`reponses possible ${reponsesAll[16][2]}`);
-      console.log(`  ${reponsesAll[17][2]} `);
-      console.log(`  ${reponsesAll[18][2]} `);
-      console.log(`${reponsesAll[19][2]} `);
-      //######################################
-      quizReponse1.innerText = reponsesAll[matrix[0] + 16][2];
-      quizReponse2.innerText = reponsesAll[matrix[1] + 16][2];
-      quizReponse3.innerText = reponsesAll[matrix[2] + 16][2];
-      quizReponse4.innerText = reponsesAll[matrix[3] + 16][2];
-
-      quizReponse1.dataset.reponse = reponsesAll[matrix[0] + 16][3];
-      quizReponse2.dataset.reponse = reponsesAll[matrix[1] + 16][3];
-      quizReponse3.dataset.reponse = reponsesAll[matrix[2] + 16][3];
-      quizReponse4.dataset.reponse = reponsesAll[matrix[3] + 16][3];
-
-      boiteReponse1.dataset.reponse = reponsesAll[matrix[0] + 16][3]; // valeur boolean reponse vrais ou faut
-      boiteReponse2.dataset.reponse = reponsesAll[matrix[1] + 16][3];
-      boiteReponse3.dataset.reponse = reponsesAll[matrix[2] + 16][3];
-      boiteReponse4.dataset.reponse = reponsesAll[matrix[3] + 16][3];
-      //######################################
-      break;
-  }
+      boiteReponse1.dataset.reponse = data["reponses"][0]["id"];
+      boiteReponse2.dataset.reponse = data["reponses"][1]["id"];
+      boiteReponse3.dataset.reponse  =data["reponses"][2]["id"];
+      boiteReponse4.dataset.reponse = data["reponses"][3]["id"];
 }
 
-async function getQuestionAndReponses( id )
+
+
+//###########################################################################
+  
+
+async function getQuestionAndReponses( data )
 {
 try{
     let reponse = await fetch("../src/getQuestionAndReponses",{method:"POST",
                             headers:{
                               "Content-Type":"application/json"
                                   },
-                            body:JSON.stringify({"status":"debug","id":id})});
+                            body:JSON.stringify({status:"question-reponses"})});
       if(!reponse.ok)
           throw new Error("j'ai un probleme");     
         
@@ -413,7 +338,10 @@ try{
         console.log(data["question"]);
         console.log(data["reponses"][0]["id"]);
         console.log(data["reponses"][0]["reponse"]);
-      }  
+        playGame2(data);
+      }
+ 
+    
 }
 catch(err)
 {
@@ -428,6 +356,7 @@ catch(err)
 
 //###########################################################################
 // fonction pour ranger les ID et les questions associer
+// fonction qui n'est plus utilisé
 function questionRange(datas) {
   datas["questions"].forEach((tab) => {
     tab.forEach((elements, index) => {
@@ -441,6 +370,7 @@ function questionRange(datas) {
 //###########################################################################
 
 //recupere les reponses a mes questions
+// fonction qui n'est plus utilisé
 async function getReponses(questions) {
   let objetIdQuestion = [{ status: "debug" }];
   questionsID.forEach((questionId) => {
@@ -501,7 +431,8 @@ async function getThemeQuestionsID(themeObjet) {
 }
 
 //###########################################################################
-// A partir du ID du theme recupère  5  questions aleatoire
+// A partir du ID  initialisation des cinq question et leur reponses
+// dans la super variable global php
 async function getThemeQuestionsForGame(themeID) {
   let themeObjet = { theme: themeID, status: "debug" };
   try {
@@ -516,7 +447,7 @@ async function getThemeQuestionsForGame(themeID) {
       console.log(
         "Debug fichier game.js fonction getThemeQuestionForGame: tout c'est bien passe :",
       );
-      getQuestionAndReponses(0); // premier call
+      getQuestionAndReponses({"status":"question-reponses"}); // premier call
       // console.log(data["questions"][0]);
       // questionsAllInformations = data; // ici j'ai mes 5 questions ;
       // questionRange(data);

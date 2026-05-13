@@ -12,12 +12,11 @@ if(isset($_SESSION["index_question"]) && $_SESSION["index_question"] >= 5 )
 
 $themeIdArray =  json_decode(file_get_contents("php://input"), true);
 
- 
- 
 
 
-if ($themeIdArray["status"] === "debug") {
-      $_SESSION["index_question"] = 
+
+if ($themeIdArray["status"] === "question-reponses") {
+   
       $question_ =   $_SESSION["questions"][$_SESSION["index_question"]]->getQuestion();
       $reponses_  =   $_SESSION["questions"][$_SESSION["index_question"]]->getReponses(); 
         
@@ -26,8 +25,8 @@ if ($themeIdArray["status"] === "debug") {
                     {  
                 $allreponses[] = ["id" =>$r->getID() ,"reponse"=>$r->getReponse()]; 
              } 
-
-            $_SESSION["index_question"]++; 
+   $_SESSION["index_question"]++;
+             
           echo json_encode(["status"=>"success","question"=>$question_,"reponses"=>$allreponses]);   
              }                
 ?>
