@@ -13,8 +13,6 @@ if(isset($_SESSION["index_question"]) && $_SESSION["index_question"] >= 5 )
 $themeIdArray =  json_decode(file_get_contents("php://input"), true);
 
 
-
-
 if ($themeIdArray["status"] === "question-reponses") {
    
       $question_ =   $_SESSION["questions"][$_SESSION["index_question"]]->getQuestion();

@@ -180,7 +180,7 @@ function btnSuivantVisible() {
 btnSuivant.addEventListener("click", (event) => {
   numQuestion++;
   if (numQuestion < 5) {
-    getQuestionAndReponses(0);
+    getQuestionAndReponses({status:"question-reponses"});
   } else {
     window.location.href = "./endGame.php";
   }
@@ -321,12 +321,13 @@ function playGame2(data)
 
 async function getQuestionAndReponses( data )
 {
+  let model = data.status ;
 try{
     let reponse = await fetch("../src/getQuestionAndReponses",{method:"POST",
                             headers:{
                               "Content-Type":"application/json"
                                   },
-                            body:JSON.stringify({status:"question-reponses"})});
+                            body:JSON.stringify({status:model})});
       if(!reponse.ok)
           throw new Error("j'ai un probleme");     
         
@@ -447,7 +448,7 @@ async function getThemeQuestionsForGame(themeID) {
       console.log(
         "Debug fichier game.js fonction getThemeQuestionForGame: tout c'est bien passe :",
       );
-      getQuestionAndReponses({"status":"question-reponses"}); // premier call
+      getQuestionAndReponses({status:"question-reponses"}); // premier call
       // console.log(data["questions"][0]);
       // questionsAllInformations = data; // ici j'ai mes 5 questions ;
       // questionRange(data);
