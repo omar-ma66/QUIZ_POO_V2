@@ -346,6 +346,7 @@ try{
     if(data["status"]=="bravo")
       {
         console.log("BRAVO");
+        console.log(data["id"]);
       }  
  
     
