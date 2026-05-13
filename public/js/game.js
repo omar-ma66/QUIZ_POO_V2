@@ -317,17 +317,19 @@ function playGame2(data)
 
 
 //###########################################################################
-  
 
 async function getQuestionAndReponses( data )
 {
-  let model = data.status ;
+  let model = data ;
 try{
     let reponse = await fetch("../src/getQuestionAndReponses",{method:"POST",
                             headers:{
                               "Content-Type":"application/json"
                                   },
-                            body:JSON.stringify({status:model})});
+                            body:JSON.stringify(model)
+                            //  body:JSON.stringify({status:model})
+                          
+                          });
       if(!reponse.ok)
           throw new Error("j'ai un probleme");     
         
